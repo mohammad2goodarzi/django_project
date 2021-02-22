@@ -3,3 +3,9 @@
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/the_project.iml
+/.idea/vcs.xml
