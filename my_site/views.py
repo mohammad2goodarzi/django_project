@@ -4,7 +4,10 @@ from django.shortcuts import render
 
 def home_page(request):
     the_title = 'Home'
-    return render(request, "Home/home.html", {'title': the_title})
+    # context = {"title": the_title}
+    # if request.user.is_authenticated:
+    context = {"title": the_title, "my_list": [1, 2, 3, 4, 5]}
+    return render(request, "Home/home.html", context)
 
 
 def about_page(request):

@@ -5,4 +5,9 @@
 {% block content %}
     <h1>Hello, World!!!</h1>
     <p>This is more about {{ title }} stuff</p>
+    <p>This is my_list: {{ my_list }}</p>
+
+    {% for a in my_list%}
+        <li> {{ a }}</li>
+    {% endfor %}
 {% endblock %}
