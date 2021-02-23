@@ -1,0 +1,9 @@
+{% extends "Home/base.html" %}
+
+{% block head_title %}{{object.id}}{% endblock %}
+
+{% block content %}
+    <h1>Blog Post</h1>
+    <p>This is title: {{ object.post_title }}</p>
+    <p>This is content: {{ object.post_content }}</p>
+{% endblock %}
