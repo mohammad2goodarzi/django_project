@@ -1,16 +1,11 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import BlogPost
 
 
 def blog_post_details(request, post_id):
-    try:
-        objects = BlogPost.objects.get(pk=post_id)
-    except BlogPost.DoesNotExist:
-        raise Http404
-    except ValueError:
-        raise Http404
+    objects = get_object_or_404(BlogPost, id=post_id)
     template_name = 'Blog/blog_post.html'
     context = {'object': objects}
     return render(request, template_name, context)
