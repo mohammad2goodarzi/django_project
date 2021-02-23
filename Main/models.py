@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
+class BlogPost(models.Model):
+    post_title = models.TextField()
+    post_content = models.TextField(null=True, blank=True)
