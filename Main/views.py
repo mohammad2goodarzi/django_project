@@ -5,40 +5,40 @@ from .models import BlogPost
 
 
 def blog_post_details(request, slug):
-    print("DJANGO SAYS", request.method, request.path, request.user)
-    objects = get_object_or_404(BlogPost, slug=slug)
+    object = get_object_or_404(BlogPost, slug=slug)
     # objects = None
     # queryset = BlogPost.objects.filter(slug=slug)
     # if queryset.count() >= 1:
     #     objects = queryset.first()
-    template_name = 'Blog/blog_post.html'
-    context = {'object': objects}
+    template_name = 'Blog/detail.html'
+    context = {'object': object}
     return render(request, template_name, context)
 
 
 def blog_post_list_view(request):
-    template_name = 'Blog/blog_post_list.html'
-    context = {'object_list': []}
+    qs = BlogPost.objects.all()
+    template_name = 'Blog/list.html'
+    context = {'object_list': qs}
     return render(request, template_name, context)
 
 
 def blog_post_create_view(request):
     # create objects
     # ? use a form
-    template_name = 'Blog/blog_post_create.html'
+    template_name = 'Blog/create.html'
     context = {'form': None}
     return render(request, template_name, context)
 
 
 def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
-    template_name = 'Blog/blog_post_update.html'
+    template_name = 'Blog/update.html'
     context = {"object": obj, 'form': None}
     return render(request, template_name, context)
 
 
 def blog_post_delete_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
-    template_name = 'Blog/blog_post_delete.html'
+    template_name = 'Blog/delete.html'
     context = {"object": obj}
     return render(request, template_name, context)

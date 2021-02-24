@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<div class='row'>
+<!--<div class='row'>-->
     {% for object in object_list %}
-        {% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False %}
+        <li>{{ object.post_title }}</li>
     {% endfor %}
-</div>
+<!--</div>-->
 
 
 {% endblock %}
