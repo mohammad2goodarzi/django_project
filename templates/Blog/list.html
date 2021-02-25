@@ -5,7 +5,9 @@
 
 <!--<div class='row'>-->
     {% for object in object_list %}
-        <li>{{ object.post_title }}</li>
+        <li>
+            <a href="{{object.get_absolute_url}}">{{ object.post_title }}</a>
+        </li>
     {% endfor %}
 <!--</div>-->
 
