@@ -44,6 +44,7 @@ def blog_post_create_view(request):
         return render(request, template_name, context)
 
 
+@login_required
 def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
     form = BlogPostModelForm(request.POST or None, instance=obj)
@@ -55,8 +56,12 @@ def blog_post_update_view(request, slug):
     return render(request, template_name, context)
 
 
+@login_required
 def blog_post_delete_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
+    if request.method == "POST":
+        obj.delete()
+        return redirect('blog_posts_list')
     template_name = 'Blog/delete.html'
     context = {"object": obj}
     return render(request, template_name, context)
