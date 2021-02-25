@@ -3,11 +3,9 @@
 {% block head_title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Hello, World!!!</h1>
-    <p>This is more about {{ title }} stuff</p>
-    <p>This is my_list: {{ my_list }}</p>
+    <h1>{{ title }}</h1>
 
-    {% for a in my_list%}
-        <li> {{ a }}</li>
+    {% for a in blog_list%}
+        {% include 'Blog/list-inline.html' with blog_post=a truncate=True%}
     {% endfor %}
 {% endblock %}

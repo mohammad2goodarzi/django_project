@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from Main.models import BlogPost
+
 
 def home_page(request):
     the_title = 'Home'
-    # context = {"title": the_title}
-    # if request.user.is_authenticated:
-    context = {"title": the_title, "my_list": [1, 2, 3, 4, 5]}
+    qs = BlogPost.objects.all()[:5]
+    context = {"title": the_title, "blog_list": qs}
     return render(request, "Home/home.html", context)
 
 

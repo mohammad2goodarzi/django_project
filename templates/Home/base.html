@@ -13,9 +13,10 @@
   <body>
     {% include 'Home/navbar.html' %}
 
-    {% block content %}
-      Replace this value
-    {% endblock %}
+    <div class="container-fluid">
+      {% block content %}
+      {% endblock %}
+    </div>
 <!--      <p>This is request.user: {{ request.user }}</p>-->
 <!--      <p>This is request.path: {{ request.path }}</p>-->
 <!--      <p>This is user: {{ user  }}</p>-->
