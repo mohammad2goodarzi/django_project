@@ -46,8 +46,12 @@ def blog_post_create_view(request):
 
 def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
-    template_name = 'Blog/update.html'
-    context = {"object": obj, 'form': None}
+    form = BlogPostModelForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('blog_posts_list')
+    template_name = 'Blog/form.html'
+    context = {"object": obj, 'form': form, 'title': f'Update {obj.post_title}'}
     return render(request, template_name, context)
 
 
