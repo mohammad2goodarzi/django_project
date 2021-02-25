@@ -9,3 +9,7 @@ __pycache__/
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/the_project.iml
 /.idea/vcs.xml
+
+
+static_cdn_test/static/
+static_cdn_test/media/
