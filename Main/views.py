@@ -21,6 +21,9 @@ def blog_post_details(request, slug):
 def blog_post_list_view(request):
     # qs = BlogPost.objects.all()
     qs = BlogPost.objects.all().published()
+    # if request.user.is_authenticated:
+    #     my_qs = BlogPost.objects.filter(user=request.user)
+    #     qs = (qs | my_qs).distinct()
     template_name = 'Blog/list.html'
     context = {'object_list': qs}
     return render(request, template_name, context)
