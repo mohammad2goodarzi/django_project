@@ -11,6 +11,12 @@ class BlogPost(models.Model):
     post_title = models.CharField(max_length=200)
     post_content = models.TextField(null=True, blank=True)
     slug = models.SlugField(default="", unique=True)
+    publish_date = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-publish_date', '-updated', '-timestamp']
 
     def get_absolute_url(self):
         return f'/blog/{self.slug}'
