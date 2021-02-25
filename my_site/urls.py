@@ -14,9 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path, include
-from .views import home_page, about_page, contact_page, features, preview
+from django.urls import path, include
 from Main.views import blog_post_create_view
+from .views import home_page, about_page, contact_page, features, preview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,6 @@ urlpatterns = [
     path('preview/', preview, name='preview'),
     path('features/', features, name='features'),
     path('blog/', include('Main.urls')),
-    path('new-post', blog_post_create_view, name='blog_post_create'),
+    path('new-post/', blog_post_create_view, name='blog_post_create'),
+    path('accounts/login/', preview),
 ]

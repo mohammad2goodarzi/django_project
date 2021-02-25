@@ -1,5 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import BlogPost
 from .forms import BlogPostModelForm
@@ -23,6 +25,8 @@ def blog_post_list_view(request):
     return render(request, template_name, context)
 
 
+@login_required
+# @staff_member_required
 def blog_post_create_view(request):
     # create objects
     # ? use a form
@@ -31,7 +35,7 @@ def blog_post_create_view(request):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            return redirect('features')
+            return redirect('blog_posts_list')
     else:
         form = BlogPostModelForm()
         template_name = 'Blog/form.html'

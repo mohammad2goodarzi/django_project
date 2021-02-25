@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+"""
+when we use login_required decorator
+default is '/accounts/login/'
+"""
+# LOGIN_URL = '/login'
 
 # Application definition
 
