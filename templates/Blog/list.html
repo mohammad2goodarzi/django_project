@@ -4,12 +4,14 @@
 {% block content %}
 
 <div class='row'>
-    {% for object in object_list %}
-        <li>
-<!--            <a href="{{object.get_absolute_url}}">{{ object.post_title }}</a>-->
-            {% include 'Blog/list-inline.html' with blog_post=object truncate=True detail=False %}
-        </li>
-    {% endfor %}
+    <ul>
+        {% for object in object_list %}
+            <li>
+    <!--            <a href="{{object.get_absolute_url}}">{{ object.post_title }}</a>-->
+                {% include 'Blog/list-inline.html' with blog_post=object truncate=True detail=False %}
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 
 

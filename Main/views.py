@@ -35,14 +35,14 @@ def blog_post_create_view(request):
     # create objects
     # ? use a form
     if request.method == "POST":
-        form = BlogPostModelForm(request.POST)
+        form = BlogPostModelForm(request.POST, request.FILES or None)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.user = request.user
             obj.save()
             return redirect('blog_posts_list')
     else:
-        form = BlogPostModelForm()
+        form = BlogPostModelForm(request.POST or None, request.FILES or None)
         template_name = 'Blog/form.html'
         context = {'form': form}
         return render(request, template_name, context)
@@ -51,13 +51,19 @@ def blog_post_create_view(request):
 @login_required
 def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
-    form = BlogPostModelForm(request.POST or None, instance=obj)
-    if form.is_valid():
-        form.save()
-        return redirect('blog_posts_list')
-    template_name = 'Blog/form.html'
-    context = {"object": obj, 'form': form, 'title': f'Update {obj.post_title}'}
-    return render(request, template_name, context)
+    if request.method == "POST":
+        form = BlogPostModelForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            print('update...........................')
+            return redirect('blog_posts_list')
+        else:
+            return HttpResponse('hellow')
+    else:
+        form = BlogPostModelForm(request.POST or None, instance=obj)
+        template_name = 'Blog/form.html'
+        context = {"object": obj, 'form': form, 'title': f'Update {obj.post_title}'}
+        return render(request, template_name, context)
 
 
 @login_required
