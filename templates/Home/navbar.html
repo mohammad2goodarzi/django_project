@@ -9,7 +9,7 @@
           <a class="nav-link" href="{% url 'blog_posts_list' %}">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'preview' %}">Categories</a>
+          <a class="nav-link" href="{% url 'show_categories' %}">Categories</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'features' %}">Features</a>
@@ -20,6 +20,11 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contact_page' %}">Contact us</a>
         </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog_post_create' %}">New Post</a>
+          </li>
+        {% endif %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

@@ -1,0 +1,12 @@
+{% extends "Home/base.html" %}
+
+{% block head_title %}{{ category.title }}{% endblock %}
+
+{% block content %}
+    <h1> {{ category.title }} Products</h1>
+
+        {% for product in products %}
+            <a href="{{ product.get_absolute_url }}" >{{ product }}</a>
+            <br />
+        {% endfor %}
+{% endblock %}

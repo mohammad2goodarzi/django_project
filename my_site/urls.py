@@ -29,6 +29,7 @@ urlpatterns = [
     path('preview/', preview, name='preview'),
     path('features/', features, name='features'),
     path('blog/', include('Main.urls')),
+    path('category/', include('blog.urls')),
     path('new-post/', blog_post_create_view, name='blog_post_create'),
     path('accounts/login/', preview),
 ]
